@@ -29,20 +29,53 @@
         }
     }
     
-    function playerSelection(){
-        input=prompt ("Rock, Paper, or Scissors?")
-        return input.toLowerCase()
+    function playerChoice(){
+        input= prompt("Rock, Paper, or Scissors?")
+            return input.toLowerCase()
     }
 
     function round (){
         var computerSelection = computerplay()
-        var player = playerSelection()
-        switch(computerSelection, player){
-            case (computerSelection === player):
-                return "It's a tie!";
-                break;
-                   
+        var playerSelection = playerChoice()
+        if (computerSelection === playerSelection){
+            winner = "It's A Tie";
+            return "It's A Tie";
+        } else if (computerSelection + playerSelection === "rockscissors" 
+                    || computerSelection + playerSelection === "scissorspaper"
+                    || computerSelection + playerSelection === "paperrock") {
+            winner = "computer wins";
+            return "computer wins";
+        } else if (computerSelection + playerSelection === "scissorsrock" 
+                    || computerSelection + playerSelection === "paperscissors"
+                    || computerSelection + playerSelection === "rockpaper"){
+            winner = "player wins";
+            return "player wins";
+        }      
+    }
+
+function game(){
+    computerwins = 0
+    playerwins = 0
+    ties = 0
+    for (i=0; i<5;i++){
+        round();
+        console.log(winner);
+        if (winner === "It's A Tie") { ties++
+        }
+        else if (winner === "computer wins"){
+            computerwins++
+        }else if (winner === "player wins"){
+            playerwins++
         }
     }
+    if (playerwins>computerwins){
+        return "Player Wins!"
+    }else if (computerwins<playerwins){
+        return "Computer Wins :("
+    } else if (computerwins===playerwins){
+        return "It's A Draw"
+    }
+
+}
     </script>
 </body>
